@@ -21,7 +21,15 @@ public class GestionEmpleado {
     public static GestionEmpleado getInstance()
     {
         if(gestion == null)
-            gestion = new GestionEmpleado();
+        {
+          gestion = new GestionEmpleado();
+          // TODO: BORRAR CUANDO YA ESTE LOS DE BD
+          gestion.InsertarLista(new Empleado(24, "Nicolas", 25.7));
+          gestion.InsertarLista(new Empleado(64, "Sebastian", 53.7));
+          gestion.InsertarLista(new Empleado(32, "Franco", 324.7));
+          
+        }
+            
         
         return gestion;
     }
@@ -36,14 +44,22 @@ public class GestionEmpleado {
     // Ordena alfabeticamente los 
     public void Ordenar()
     {
-        ListaE.sort(Comparator.comparing(Empleado::getNombre, String::compareToIgnoreCase));
+        ListaE.sort(Comparator.comparing(
+                Empleado::getNombre,
+                String::compareToIgnoreCase));
     
     }
     
     // Inserta en el arreglo lógico, faltaria en la base de datos
-    public void InsertarLista(Empleado e)
+    // TODO: VER COMO SE VALIDA LA INSERCION
+    public boolean InsertarLista(Empleado e)
     {
         ListaE.add(e);
+        return true;
+    }
+
+    public ArrayList<Empleado> getListaE() {
+        return ListaE;
     }
     
     

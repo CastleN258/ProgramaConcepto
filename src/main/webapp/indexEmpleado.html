@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Empleados</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Lista de Empleados</h1>
+        <table>
+            <thead>
+            <tr>
+                <td>id</td>
+                <td>Nombre</td>
+                <td>Salario</td>
+            </tr>
+            </thead>
+            <tbody id="tablacuerpo">
+           <!-- Aqui vendria los datos de la tabla por columna -->  
+                
+            </tbody>
+
+        </table>
+        
+        <script>
+           fetch('/Tarea1Conceptos/ServletEmpleado')
+              .then(response => response.json())
+              .then(empleados =>
+               {
+                   const cuerpo = document.getElementById('tablacuerpo');
+                   
+                   empleados.forEach(e =>
+                   {
+                      const fila = document.createElement('tr');
+                      fila.innerHTML = `<td>${e.id}</td> 
+                                        <td>${e.nombre}</td>
+                                         <td>${e.salario}</td>`;
+                      cuerpo.appendChild(fila);
+                   });
+          
+                }).catch(error => 
+                console.error('ERROR: NO SE PUDO CARGAR EMPLEADOS:', error));
+            
+            
+            
+        </script>
+        
+        
+        <button type = "submit">Insertar</button>
+        
+    </body>
+</html>
