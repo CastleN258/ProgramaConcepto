@@ -24,9 +24,9 @@ public class GestionEmpleado {
         {
           gestion = new GestionEmpleado();
           // TODO: BORRAR CUANDO YA ESTE LOS DE BD
-          gestion.InsertarLista(new Empleado(24, "Nicolas", 25.7));
-          gestion.InsertarLista(new Empleado(64, "Sebastian", 53.7));
-          gestion.InsertarLista(new Empleado(32, "Franco", 324.7));
+          gestion.InsertarLista(new Empleado(5, "Nicolas", 200000));
+          gestion.InsertarLista(new Empleado(7, "Sebastian", 150000));
+          gestion.InsertarLista(new Empleado(3, "Franco", 25000));
           
         }
             

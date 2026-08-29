@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author imac
+ * @author Niko
  */
 @WebServlet(urlPatterns = {"/ServletEmpleado"})
 public class ServletEmpleado extends HttpServlet {

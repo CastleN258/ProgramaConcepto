@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Insertar Empleado</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1> Insertar Empleado </h1>
+        <form id="InsercionForm">
+            Nombre: <input  type = "text" id="nombreE" placeholder="Nombre" required>
+            Salario: <input  type = "text" id="SalarioE" placeholder="Monto" required>
+            <button type = "submit">Insertar</button>
+        </form>
+        <div id="message" style="margin-top: 10px; text-align:center;"></div>
+        <button onclick="window.location.href='indexEmpleado.html'">Regresar</button>
+    </body>
+    
+    <script>
+    const form = document.getElementById('InsercionForm');
+
+    form.addEventListener('submit', function(event) 
+    {
+        event.preventDefault();
+        const msg = document.getElementById('message'); // Mensaje de insercion correcta o no
+
+        if(!this.checkValidity()) 
+        {
+            msg.textContent = 'Por favor rellene todo los espacios requeridos';
+            msg.style.color = 'red';
+            return;
+        } 
+        else 
+        {
+            const nom = document.getElementById('nombreE').value.trim();
+            const monto = document.getElementById('SalarioE').value.trim();
+            
+            // Patrones regex de validar el nombre y saldo
+            const ValiNom = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ -]+$/;
+            const ValiSaldo = /^\d+(\.\d{2,4})?$/;
+            
+            if(!ValiNom.test(nom))
+            {
+            msg.textContent = 'Por favor el nombre solamente con\n\
+                valores alfabeticos o con un guion de separacion';
+            msg.style.color = 'red';
+            return; 
+            }
+            
+            if(!ValiSaldo.test(monto))
+            {
+            msg.textContent = 'Por favor el saldo digitado debe de ser\n\
+                digitos o punto decimal de no mas 2 o 4 decimales';
+            msg.style.color = 'red';
+            return; 
+            }
+        
+
+            const NEmpleado = { 
+                nombre: nom, 
+                salario: parseFloat(monto) 
+            };
+
+            fetch('/Tarea1Conceptos/ServletEmpleado', 
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(NEmpleado)
+            })
+            .then(response => response.json())
+            .then(insercion => 
+            {
+                if(insercion.exito) 
+                {
+                    msg.textContent = 'El empleado se insertó en la lista';
+                    msg.style.color = 'green';
+                    form.reset();
+                    window.location.href='indexEmpleado.html';
+                } // TODO ELSE DE VALIDACION
+            })
+            .catch(error => console.error('ERROR', error));
+        }
+    });
+
+                
+
+    </script>
+    
+</html>

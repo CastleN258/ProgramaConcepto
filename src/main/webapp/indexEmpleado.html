@@ -15,12 +15,12 @@
             </tr>
             </thead>
             <tbody id="tablacuerpo">
-           <!-- Aqui vendria los datos de la tabla por columna -->  
+           
                 
             </tbody>
 
         </table>
-        
+        <!-- Aqui vendria los datos de la tabla por columna -->  
         <script>
            fetch('/Tarea1Conceptos/ServletEmpleado')
               .then(response => response.json())
@@ -45,7 +45,7 @@
         </script>
         
         
-        <button type = "submit">Insertar</button>
+        <button onclick="window.location.href='indexInsertar.html'">Insertar</button>
         
     </body>
 </html>
