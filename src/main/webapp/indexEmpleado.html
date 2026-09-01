@@ -3,15 +3,55 @@
     <head>
         <title>Empleados</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+              rel="stylesheet">
+        <style>
+            .ListE
+            {
+                border-collapse: collapse;
+            }
+            .ListE th,
+            .ListE td 
+            {
+              border: 1px solid #ccc;
+              padding: 10px 
+            }
+            .ListE thead th
+            {
+              background-color: #008CBA;
+              color: white;
+            }
+              
+            .ListE tbody td 
+            {
+                background-color: white;
+                color: black;
+            }
+    
+             .BtnInsert
+            {
+                background-color: #008CBA;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                margin: 5px
+            }
+            
+        </style>
     </head>
     <body>
         <h1>Lista de Empleados</h1>
-        <table>
+        <table class = "ListE">
             <thead>
             <tr>
-                <td>id</td>
-                <td>Nombre</td>
-                <td>Salario</td>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Salario</th>
             </tr>
             </thead>
             <tbody id="tablacuerpo">
@@ -45,7 +85,8 @@
         </script>
         
         
-        <button onclick="window.location.href='indexInsertar.html'">Insertar</button>
+        <button class ="BtnInsert"
+            onclick="window.location.href='indexInsertar.html'">Insertar</button>
         
     </body>
 </html>

@@ -8,16 +8,78 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <title>Insertar Empleado</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .BtnReturn
+            {
+                background-color: #008CBA;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                margin: 5px
+            }
+            
+            .BtnInsert
+            {
+                background-color: white;
+                border: 2px solid #008CBA;
+                color: cornflowerblue;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                margin: 5px
+            }
+            
+            .txtmargen
+            {
+                border: 2px solid #008CBA;
+                margin: 15px;
+            }
+            
+            
+        </style>
     </head>
     <body>
+        <div> 
         <h1> Insertar Empleado </h1>
-        <form id="InsercionForm">
-            Nombre: <input  type = "text" id="nombreE" placeholder="Nombre" required>
-            Salario: <input  type = "text" id="SalarioE" placeholder="Monto" required>
-            <button type = "submit">Insertar</button>
-        </form>
-        <div id="message" style="margin-top: 10px; text-align:center;"></div>
-        <button onclick="window.location.href='indexEmpleado.html'">Regresar</button>
+        <form id="InsercionForm"> 
+        
+         <div>
+            <label>Nombre: </label>
+            <input class= "txtmargen" 
+                   type="text" id="nombreE">
+           
+        </div>
+        
+        <div>
+            <label>Salario: </label>
+            <input class= "txtmargen" 
+                   type="text" id="SalarioE">
+           
+        </div>
+        <div>
+            <button class = "BtnReturn" 
+                    onclick="window.location.href='indexEmpleado.html'">Regresar</button>  
+            <button class = "BtnInsert"
+                    type = "submit">Insertar</button>
+            <div id="message" style="margin-top: 10px; text-align:center;"></div>
+            
+        </div>      
+       </form>
+     </div>
+ 
+       
+        
+        
+  
     </body>
     
     <script>
