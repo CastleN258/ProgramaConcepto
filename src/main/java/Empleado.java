@@ -19,6 +19,11 @@ public class Empleado {
         this.salario = salario;
     }
 
+    public Empleado() {
+    }
+    
+    
+
     public int getId() {
         return id;
     }
@@ -29,6 +34,18 @@ public class Empleado {
 
     public double getSalario() {
         return salario;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
     
     

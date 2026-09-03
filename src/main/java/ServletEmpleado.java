@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -91,10 +92,34 @@ public class ServletEmpleado extends HttpServlet {
         Gson gson = new Gson();
         // Generamos el empleado nuevo por insertar
         Empleado nuevoE = gson.fromJson(request.getReader(), Empleado.class);
-        //TODO: VER COMO SE INSERTA DENTRO DE LA BD
-        boolean bandera = lista.InsertarLista(nuevoE);
+        int resultado = 0;
+        try {
+            resultado = lista.InsertarLista(nuevoE);
+        } catch (SQLException ex) {
+            System.out.println("Error SQL: " + ex.getMessage());
+
+        } catch (ClassNotFoundException ex) {
+              System.out.println("Error Clase: " + ex.getMessage());
+  
+        }
+        boolean exito = resultado == 0;
+        String msg = "";
         
-        response.getWriter().write("{\"exito\": " + bandera + "}");
+        switch(resultado)
+        {
+            case 0:
+                msg = "Inserción exitosa";
+                break;
+                
+            case -1:
+                msg = "Nombre de Empleado ya existe";
+                break;
+                
+        }
+        response.setContentType("application/json");
+        response.getWriter().write("{\"exito\": " 
+                + exito + ", \"mensaje\": \"" 
+                + msg + "\"}");
     }
 
     /**
