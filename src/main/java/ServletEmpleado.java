@@ -65,11 +65,20 @@ public class ServletEmpleado extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         
         // Ordenamos la lista
-        lista.Ordenar();
+        ArrayList<Empleado> Actual = new ArrayList<>();
+        try {
+            Actual = lista.ObtenerDatosBD();
+        } catch (SQLException ex) {
+            System.out.println("Error SQL: " + ex.getMessage());
+
+        } catch (ClassNotFoundException ex) {
+              System.out.println("Error Clase: " + ex.getMessage());
+  
+        }
         
         // Gson transforma objectos de java en json
         Gson gson = new Gson();
-        String json = gson.toJson(lista.getListaE());
+        String json = gson.toJson(Actual);
         
         // Escribirmos en la respuesta el json
         response.getWriter().write(json);    

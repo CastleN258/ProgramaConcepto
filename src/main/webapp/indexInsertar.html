@@ -50,19 +50,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <body>
         <div> 
         <h1> Insertar Empleado </h1>
-        <form id="InsercionForm"> 
+        <form id="InsercionForm" novalidate> 
         
          <div>
             <label>Nombre: </label>
             <input class= "txtmargen" 
-                   type="text" id="nombreE">
+                   type="text" id="nombreE" required>
            
         </div>
         
         <div>
             <label>Salario: </label>
             <input class= "txtmargen" 
-                   type="text" id="SalarioE">
+                   type="text" id="SalarioE" required>
            
         </div>
         <div>
@@ -100,6 +100,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         {
             const nom = document.getElementById('nombreE').value.trim();
             const monto = document.getElementById('SalarioE').value.trim();
+            
+            console.log('EL SCRIPT SE CARGÓ');
             
             // Patrones regex de validar el nombre y saldo
             const ValiNom = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ -]+$/;

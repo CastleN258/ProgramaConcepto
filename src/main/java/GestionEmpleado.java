@@ -59,15 +59,6 @@ public class GestionEmpleado {
         }        
     }
     
-    // Ordena alfabeticamente los empleados
-    public void Ordenar()
-    {
-        ListaE.sort(Comparator.comparing(
-                Empleado::getNombre,
-                String::compareToIgnoreCase));
-    
-    }
-    
     // Metodo de insertar lista, se retorna un 0 si pudo insertar o -1 so ya existe
     public int InsertarLista(Empleado e) throws SQLException, ClassNotFoundException
     {
